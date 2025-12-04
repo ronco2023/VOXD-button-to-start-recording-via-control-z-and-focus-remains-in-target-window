@@ -1,0 +1,65 @@
+Voxd Toggle Button
+Start and Stop Voxd Recording From The Panel Without Losing Cursor Focus
+
+Voxd works well, but using Ctrl+Z directly often causes the Voxd window to take focus, minimising the user’s editor and interrupting paste behaviour. This small tool fixes that by providing a clickable button in the panel which sends Ctrl+Z globally, allowing Voxd to start or stop recording while the user remains in the editor. This makes transcription flow smoother with no window switching.
+
+Purpose:
+• One-click microphone toggle for Voxd
+• Keeps focus in text editor so transcripts paste correctly
+• Works even if the Voxd window is minimised
+• Lightweight and easy to install
+• Good workaround until an official GUI toggle exists
+
+Requirements:
+xdotool must be installed. You can install it using:
+sudo apt install xdotool
+
+Installation Steps
+
+Create the Python script
+Create a file called voxd_toggle.py in your home folder, and paste the following text inside it:
+
+#!/usr/bin/env python3
+import subprocess
+subprocess.run(["xdotool", "key", "--clearmodifiers", "ctrl+z"])
+
+Save, then make the file executable using:
+chmod +x ~/voxd_toggle.py
+
+Create the desktop launcher
+Create the following file:
+~/.local/share/applications/voxd-toggle.desktop
+
+Paste inside:
+
+[Desktop Entry]
+Name=Voxd Toggle
+Exec=/home/USERNAME/voxd_toggle.py
+Icon=audio-input-microphone
+Terminal=false
+Type=Application
+Categories=Utility;
+
+Replace USERNAME with your actual Linux username (echo $USER will show it).
+
+Refresh desktop entries using:
+update-desktop-database ~/.local/share/applications
+
+Add to Panel
+Open Menu
+Search for Voxd Toggle
+Right-click and choose “Add to Panel”
+(Optional) Add to Favourites for quick access
+
+Usage:
+Click the panel icon to toggle Voxd recording without changing window focus.
+Click again to stop recording and let Voxd paste automatically into the active text field.
+
+Why this exists:
+Voxd uses Ctrl+Z to start and stop recording. Sending this shortcut from keyboard or window focus often forces Voxd to foreground, which interrupts typing. A panel button avoids this by emitting the command externally.
+
+Future Enhancements (ideas welcome):
+• Cinnamon applet with live recording indicator
+• Icon colour change while recording
+• Autoinstall script
+• Wayland-compatible alternative for xdotool
