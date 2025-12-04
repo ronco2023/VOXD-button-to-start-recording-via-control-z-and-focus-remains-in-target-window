@@ -63,3 +63,5 @@ Future Enhancements (ideas welcome):
 • Icon colour change while recording
 • Autoinstall script
 • Wayland-compatible alternative for xdotool
+
+I have also created a word replacement script that will remove unwanted words sich as [BLANK AUDIO] and uses json file for word pair changes such as frequently mis transcribed words.  Single words can also be used to create a phrase such as  end message could return your normal email disclaimer.
