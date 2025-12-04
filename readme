@@ -1,4 +1,4 @@
-Voxd Toggle Button
+Voxd Toggle Button - tested with VOXD version 7 and linux Mint Cinnamon 
 Start and Stop Voxd Recording From The Panel Without Losing Cursor Focus
 
 Voxd works well, but using Ctrl+Z directly often causes the Voxd window to take focus, minimising the user’s editor and interrupting paste behaviour. This small tool fixes that by providing a clickable button in the panel which sends Ctrl+Z globally, allowing Voxd to start or stop recording while the user remains in the editor. This makes transcription flow smoother with no window switching.
